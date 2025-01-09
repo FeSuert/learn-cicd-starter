@@ -26,6 +26,9 @@ jobs:
       
       - name: Run gosec
         run: gosec ./...
+      
+      - name: Run diff
+        run: git diff
 
   style:
     name: Style
