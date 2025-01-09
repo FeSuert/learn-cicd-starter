@@ -34,7 +34,7 @@ jobs:
 
       # Step 5: Run database migrations using migrate.sh
       - name: Run database migrations
-        run: scripts/migrate.sh
+        run: scripts/migrateup.sh
 
       # Step 6: Authenticate with GCP
       - name: Authenticate with GCP
