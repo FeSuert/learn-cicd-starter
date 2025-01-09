@@ -40,4 +40,4 @@ jobs:
       # Step 6: Build and push Docker image to Artifact Registry
       - name: Build and Push Docker Image
         run: |
-          gcloud builds submit --tag 
+          gcloud builds submit --tag us-central1-docker.pkg.dev/notely-447316/notely-ar-repo/notely:latest .
