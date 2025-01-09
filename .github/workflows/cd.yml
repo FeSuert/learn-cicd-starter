@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the code
+      # Step 1: Check out code
       - name: Check out code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Go toolchain
+      # Step 2: Set up Go
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
@@ -23,3 +23,21 @@ jobs:
       # Step 3: Build the app
       - name: Build production app
         run: scripts/buildprod.sh
+
+      # Step 4: Authenticate with GCP
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      # Step 5: Set up gcloud CLI
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: notely-447316
+          install_components: "gcloud"
+
+      # Step 6: Build and push Docker image to Artifact Registry
+      - name: Build and Push Docker Image
+        run: |
+          gcloud builds submit --tag 
